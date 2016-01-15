@@ -40,6 +40,14 @@
                 "rbind"
             ]
         },
+        "/data": {
+            "type": "bind",
+            "source": "/home/jessie/.chrome",
+            "options": [
+                "rw",
+                "rbind"
+            ]
+        },
         "/root/Downloads": {
             "type": "bind",
             "source": "/home/jessie/Downloads",

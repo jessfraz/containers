@@ -64,6 +64,10 @@
             "path": "/dev/shm"
         },
         {
+            "name": "/data",
+            "path": "/data"
+        },
+        {
             "name": "/root/Downloads",
             "path": "/root/Downloads"
         },

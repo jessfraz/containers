@@ -1,5 +1,43 @@
 {
     "mounts": {
+        "/data": {
+            "type": "bind",
+            "source": "/home/jessie/.chrome",
+            "options": [
+                "rw",
+                "rbind"
+            ]
+        },
+        "/dev": {
+            "type": "tmpfs",
+            "source": "tmpfs",
+            "options": [
+                "nosuid",
+                "strictatime",
+                "mode=755",
+                "size=65536k"
+            ]
+        },
+        "/dev/mqueue": {
+            "type": "mqueue",
+            "source": "mqueue",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
+            ]
+        },
+        "/dev/pts": {
+            "type": "devpts",
+            "source": "devpts",
+            "options": [
+                "nosuid",
+                "noexec",
+                "newinstance",
+                "ptmxmode=0666",
+                "mode=0620"
+            ]
+        },
         "/dev/shm": {
             "type": "bind",
             "source": "/dev/shm",
@@ -12,16 +50,8 @@
             "type": "bind",
             "source": "/etc/hosts",
             "options": [
-                "ro",
-                "rbind"
-            ]
-        },
-        "/etc/resolv.conf": {
-            "type": "bind",
-            "source": "/etc/resolv.conf",
-            "options": [
-                "ro",
-                "rbind"
+                "rbind",
+                "ro"
             ]
         },
         "/etc/localtime": {
@@ -32,21 +62,17 @@
                 "rbind"
             ]
         },
-        "/tmp/.X11-unix": {
+        "/etc/resolv.conf": {
             "type": "bind",
-            "source": "/tmp/.X11-unix",
+            "source": "/etc/resolv.conf",
             "options": [
-                "rw",
-                "rbind"
+                "rbind",
+                "ro"
             ]
         },
-        "/data": {
-            "type": "bind",
-            "source": "/home/jessie/.chrome",
-            "options": [
-                "rw",
-                "rbind"
-            ]
+        "/proc": {
+            "type": "proc",
+            "source": "proc"
         },
         "/root/Downloads": {
             "type": "bind",
@@ -72,7 +98,16 @@
                 "rbind"
             ]
         },
-        "cgroup": {
+        "/sys": {
+            "type": "sysfs",
+            "source": "sysfs",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
+            ]
+        },
+        "/sys/fs/cgroup": {
             "type": "cgroup",
             "source": "cgroup",
             "options": [
@@ -82,47 +117,12 @@
                 "relatime"
             ]
         },
-        "dev": {
-            "type": "tmpfs",
-            "source": "tmpfs",
+        "/tmp/.X11-unix": {
+            "type": "bind",
+            "source": "/tmp/.X11-unix",
             "options": [
-                "nosuid",
-                "strictatime",
-                "mode=755",
-                "size=65536k"
-            ]
-        },
-        "devpts": {
-            "type": "devpts",
-            "source": "devpts",
-            "options": [
-                "nosuid",
-                "noexec",
-                "newinstance",
-                "ptmxmode=0666",
-                "mode=0620"
-            ]
-        },
-        "mqueue": {
-            "type": "mqueue",
-            "source": "mqueue",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
-            ]
-        },
-        "proc": {
-            "type": "proc",
-            "source": "proc"
-        },
-        "sysfs": {
-            "type": "sysfs",
-            "source": "sysfs",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
+                "rw",
+                "rbind"
             ]
         }
     },
@@ -136,26 +136,16 @@
     "linux": {
         "uidMappings": [
             {
-                "hostID": 886432,
+                "hostID": 87645,
                 "containerID": 0,
-                "size": 65535
+                "size": 46578392
             }
         ],
         "gidMappings": [
             {
-                "hostID": 886432,
-                "containerID": 0,
-                "size": 28
-            },
-            {
                 "hostID": 29,
                 "containerID": 29,
                 "size": 1
-            },
-            {
-                "hostID": 886461,
-                "containerID": 30,
-                "size": 13
             },
             {
                 "hostID": 44,
@@ -163,9 +153,19 @@
                 "size": 1
             },
             {
-                "hostID": 886474,
+                "hostID": 87716,
                 "containerID": 45,
-                "size": 65593
+                "size": 46578317
+            },
+            {
+                "hostID": 87673,
+                "containerID": 30,
+                "size": 13
+            },
+            {
+                "hostID": 87645,
+                "containerID": 0,
+                "size": 28
             }
         ],
         "rlimits": [

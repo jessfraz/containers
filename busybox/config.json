@@ -16,8 +16,8 @@
         "env": [
             "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
             "TERM=xterm"
-        ]
-
+        ],
+        "cwd": ""
     },
     "root": {
         "path": "rootfs",
@@ -61,6 +61,7 @@
             "name": "/etc/resolv.conf",
             "path": "/etc/resolv.conf"
         }
+
     ],
     "linux": {
         "capabilities": [

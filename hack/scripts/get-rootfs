@@ -6,15 +6,18 @@ bundle=rootfs
 userns_uid=$(cat runtime.json | jq '.linux.uidMappings' | jq --raw-output '.[0].hostID' || echo "")
 
 if [[ -z "$image" ]]; then
-	echo "pass an image name to save for the rootfs"
-	exit 1
+	# get the basename of the current directory
+	image=$(basename "$(pwd)")
 fi
 
+docker pull "$image" || {
+image="jess/${image}"
 docker pull "$image"
+}
 
 shortname=${image%%:*}
 if echo "$shortname" | grep -q "/" ; then
-	shortname=${sortname#*/}
+	shortname=${shortname#*/}
 fi
 
 id=$(docker create "$image" || docker create "$image" sh)
@@ -28,10 +31,10 @@ if [[ -d "$bundle" ]]; then
 fi
 
 mkdir -p "$bundle"
-tar -C "$bundle" -xf "${shortname}.tar"
+sudo tar -C "$bundle" -xf "${shortname}.tar"
 
 # chown for userns
-if [[ ! -z "$userns_uid" ]]; then
+if [ ! -z "$userns_uid" ] && [ "$userns_uid" != "null" ]; then
 	sudo chown -R "${userns_uid}":"${userns_uid}" "${bundle}"
 fi
 

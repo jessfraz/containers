@@ -60,20 +60,20 @@
             "path": "/sys/fs/cgroup"
         },
         {
-            "name": "/etc/hosts",
-            "path": "/etc/hosts"
-        },
-        {
-            "name": "/etc/resolv.conf",
-            "path": "/etc/resolv.conf"
-        },
-        {
             "name": "/etc/localtime",
             "path": "/etc/localtime"
         },
         {
             "name": "/tmp/.X11-unix",
             "path": "/tmp/.X11-unix"
+        },
+        {
+            "name": "/etc/hosts",
+            "path": "/etc/hosts"
+        },
+        {
+            "name": "/etc/resolv.conf",
+            "path": "/etc/resolv.conf"
         }
     ],
     "linux": {

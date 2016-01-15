@@ -1,16 +1,16 @@
 {
     "mounts": {
-        "/etc/localtime": {
-            "type": "bind",
-            "source": "/etc/localtime",
-            "options": [
-                "ro",
-                "rbind"
-            ]
-        },
         "/etc/hosts": {
             "type": "bind",
             "source": "/etc/hosts",
+            "options": [
+                "rbind",
+                "ro"
+            ]
+        },
+        "/etc/localtime": {
+            "type": "bind",
+            "source": "/etc/localtime",
             "options": [
                 "ro",
                 "rbind"
@@ -20,8 +20,8 @@
             "type": "bind",
             "source": "/etc/resolv.conf",
             "options": [
-                "ro",
-                "rbind"
+                "rbind",
+                "ro"
             ]
         },
         "/tmp/.X11-unix": {
@@ -107,26 +107,26 @@
     "linux": {
         "uidMappings": [
             {
-                "hostID": 886432,
+                "hostID": 87645,
                 "containerID": 0,
-                "size": 65535
+                "size": 46578392
             }
         ],
         "gidMappings": [
-            {
-                "hostID": 886432,
-                "containerID": 0,
-                "size": 28
-            },
             {
                 "hostID": 29,
                 "containerID": 29,
                 "size": 1
             },
             {
-                "hostID": 886461,
+                "hostID": 87673,
                 "containerID": 30,
-                "size": 65608
+                "size": 46578362
+            },
+            {
+                "hostID": 87645,
+                "containerID": 0,
+                "size": 28
             }
         ],
         "rlimits": [

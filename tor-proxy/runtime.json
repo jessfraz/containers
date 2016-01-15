@@ -1,24 +1,6 @@
 {
     "mounts": {
-        "/etc/localtime": {
-            "type": "bind",
-            "source": "/etc/localtime",
-            "options": [
-                "ro",
-                "rbind"
-            ]
-        },
-        "cgroup": {
-            "type": "cgroup",
-            "source": "cgroup",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev",
-                "relatime"
-            ]
-        },
-        "dev": {
+        "/dev": {
             "type": "tmpfs",
             "source": "tmpfs",
             "options": [
@@ -28,7 +10,16 @@
                 "size=65536k"
             ]
         },
-        "devpts": {
+        "/dev/mqueue": {
+            "type": "mqueue",
+            "source": "mqueue",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
+            ]
+        },
+        "/dev/pts": {
             "type": "devpts",
             "source": "devpts",
             "options": [
@@ -39,20 +30,7 @@
                 "mode=0620"
             ]
         },
-        "mqueue": {
-            "type": "mqueue",
-            "source": "mqueue",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
-            ]
-        },
-        "proc": {
-            "type": "proc",
-            "source": "proc"
-        },
-        "shm": {
+        "/dev/shm": {
             "type": "tmpfs",
             "source": "shm",
             "options": [
@@ -63,7 +41,19 @@
                 "size=65536k"
             ]
         },
-        "sysfs": {
+        "/etc/localtime": {
+            "type": "bind",
+            "source": "/etc/localtime",
+            "options": [
+                "ro",
+                "rbind"
+            ]
+        },
+        "/proc": {
+            "type": "proc",
+            "source": "proc"
+        },
+        "/sys": {
             "type": "sysfs",
             "source": "sysfs",
             "options": [
@@ -71,28 +61,32 @@
                 "noexec",
                 "nodev"
             ]
+        },
+        "/sys/fs/cgroup": {
+            "type": "cgroup",
+            "source": "cgroup",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev",
+                "relatime"
+            ]
         }
     },
-    "hooks": {
-        "prestart": [
-            {
-                "path": "/home/jessie/.go/bin/netns"
-            }
-        ]
-    },
+    "hooks": {},
     "linux": {
         "uidMappings": [
             {
                 "hostID": 886432,
                 "containerID": 0,
-                "size": 65535
+                "size": 46578392
             }
         ],
         "gidMappings": [
             {
                 "hostID": 886432,
                 "containerID": 0,
-                "size": 65535
+                "size": 46578392
             }
         ],
         "rlimits": [

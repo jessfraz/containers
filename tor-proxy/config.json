@@ -27,36 +27,36 @@
     "hostname": "tor-proxy",
     "mounts": [
         {
-            "name": "proc",
+            "name": "/etc/localtime",
+            "path": "/etc/localtime"
+        },
+        {
+            "name": "/proc",
             "path": "/proc"
         },
         {
-            "name": "dev",
+            "name": "/dev",
             "path": "/dev"
         },
         {
-            "name": "devpts",
+            "name": "/dev/pts",
             "path": "/dev/pts"
         },
         {
-            "name": "shm",
+            "name": "/dev/shm",
             "path": "/dev/shm"
         },
         {
-            "name": "mqueue",
+            "name": "/dev/mqueue",
             "path": "/dev/mqueue"
         },
         {
-            "name": "sysfs",
+            "name": "/sys",
             "path": "/sys"
         },
         {
-            "name": "cgroup",
+            "name": "/sys/fs/cgroup",
             "path": "/sys/fs/cgroup"
-        },
-        {
-            "name": "/etc/localtime",
-            "path": "/etc/localtime"
         }
     ],
     "linux": {

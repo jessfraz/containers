@@ -1,16 +1,6 @@
 {
     "mounts": {
-        "cgroup": {
-            "type": "cgroup",
-            "source": "cgroup",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev",
-                "relatime"
-            ]
-        },
-        "dev": {
+        "/dev": {
             "type": "tmpfs",
             "source": "tmpfs",
             "options": [
@@ -20,7 +10,16 @@
                 "size=65536k"
             ]
         },
-        "devpts": {
+        "/dev/mqueue": {
+            "type": "mqueue",
+            "source": "mqueue",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
+            ]
+        },
+        "/dev/pts": {
             "type": "devpts",
             "source": "devpts",
             "options": [
@@ -31,20 +30,7 @@
                 "mode=0620"
             ]
         },
-        "mqueue": {
-            "type": "mqueue",
-            "source": "mqueue",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
-            ]
-        },
-        "proc": {
-            "type": "proc",
-            "source": "proc"
-        },
-        "shm": {
+        "/dev/shm": {
             "type": "tmpfs",
             "source": "shm",
             "options": [
@@ -55,7 +41,27 @@
                 "size=65536k"
             ]
         },
-        "sysfs": {
+        "/etc/hosts": {
+            "type": "bind",
+            "source": "/etc/hosts",
+            "options": [
+                "rbind",
+                "ro"
+            ]
+        },
+        "/etc/resolv.conf": {
+            "type": "bind",
+            "source": "/etc/resolv.conf",
+            "options": [
+                "rbind",
+                "ro"
+            ]
+        },
+        "/proc": {
+            "type": "proc",
+            "source": "proc"
+        },
+        "/sys": {
             "type": "sysfs",
             "source": "sysfs",
             "options": [
@@ -64,20 +70,14 @@
                 "nodev"
             ]
         },
-        "/etc/hosts": {
-            "type": "bind",
-            "source": "/etc/hosts",
+        "/sys/fs/cgroup": {
+            "type": "cgroup",
+            "source": "cgroup",
             "options": [
-                "ro",
-                "rbind"
-            ]
-        },
-        "/etc/resolv.conf": {
-            "type": "bind",
-            "source": "/etc/resolv.conf",
-            "options": [
-                "ro",
-                "rbind"
+                "nosuid",
+                "noexec",
+                "nodev",
+                "relatime"
             ]
         }
     },
@@ -91,16 +91,16 @@
     "linux": {
         "uidMappings": [
             {
-                "hostID": 886432,
+                "hostID": 87645,
                 "containerID": 0,
-                "size": 65535
+                "size": 46578392
             }
         ],
         "gidMappings": [
             {
-                "hostID": 886432,
+                "hostID": 87645,
                 "containerID": 0,
-                "size": 65535
+                "size": 46578392
             }
         ],
         "rlimits": [

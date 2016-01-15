@@ -1,5 +1,46 @@
 {
     "mounts": {
+        "/dev": {
+            "type": "tmpfs",
+            "source": "tmpfs",
+            "options": [
+                "nosuid",
+                "strictatime",
+                "mode=755",
+                "size=65536k"
+            ]
+        },
+        "/dev/mqueue": {
+            "type": "mqueue",
+            "source": "mqueue",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
+            ]
+        },
+        "/dev/pts": {
+            "type": "devpts",
+            "source": "devpts",
+            "options": [
+                "nosuid",
+                "noexec",
+                "newinstance",
+                "ptmxmode=0666",
+                "mode=0620"
+            ]
+        },
+        "/dev/shm": {
+            "type": "tmpfs",
+            "source": "shm",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev",
+                "mode=1777",
+                "size=65536k"
+            ]
+        },
         "/etc/hosts": {
             "type": "bind",
             "source": "/etc/hosts",
@@ -24,15 +65,20 @@
                 "ro"
             ]
         },
-        "/tmp/.X11-unix": {
-            "type": "bind",
-            "source": "/tmp/.X11-unix",
+        "/proc": {
+            "type": "proc",
+            "source": "proc"
+        },
+        "/sys": {
+            "type": "sysfs",
+            "source": "sysfs",
             "options": [
-                "rw",
-                "rbind"
+                "nosuid",
+                "noexec",
+                "nodev"
             ]
         },
-        "cgroup": {
+        "/sys/fs/cgroup": {
             "type": "cgroup",
             "source": "cgroup",
             "options": [
@@ -42,58 +88,12 @@
                 "relatime"
             ]
         },
-        "dev": {
-            "type": "tmpfs",
-            "source": "tmpfs",
+        "/tmp/.X11-unix": {
+            "type": "bind",
+            "source": "/tmp/.X11-unix",
             "options": [
-                "nosuid",
-                "strictatime",
-                "mode=755",
-                "size=65536k"
-            ]
-        },
-        "devpts": {
-            "type": "devpts",
-            "source": "devpts",
-            "options": [
-                "nosuid",
-                "noexec",
-                "newinstance",
-                "ptmxmode=0666",
-                "mode=0620"
-            ]
-        },
-        "mqueue": {
-            "type": "mqueue",
-            "source": "mqueue",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
-            ]
-        },
-        "proc": {
-            "type": "proc",
-            "source": "proc"
-        },
-        "shm": {
-            "type": "tmpfs",
-            "source": "shm",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev",
-                "mode=1777",
-                "size=65536k"
-            ]
-        },
-        "sysfs": {
-            "type": "sysfs",
-            "source": "sysfs",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
+                "rw",
+                "rbind"
             ]
         }
     },

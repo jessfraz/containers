@@ -63,9 +63,31 @@
                 "noexec",
                 "nodev"
             ]
+        },
+        "/etc/hosts": {
+            "type": "bind",
+            "source": "/etc/hosts",
+            "options": [
+                "ro",
+                "rbind"
+            ]
+        },
+        "/etc/resolv.conf": {
+            "type": "bind",
+            "source": "/etc/resolv.conf",
+            "options": [
+                "ro",
+                "rbind"
+            ]
         }
     },
-    "hooks": {},
+    "hooks": {
+        "prestart": [
+            {
+                "path": "/home/jessie/.go/bin/netns"
+            }
+        ]
+    },
     "linux": {
         "uidMappings": [
             {

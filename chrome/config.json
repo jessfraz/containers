@@ -72,10 +72,6 @@
             "path": "/root/Torrents"
         },
         {
-            "name": "/data",
-            "path": "/data"
-        },
-        {
             "name": "/dev/shm",
             "path": "/dev/shm"
         },

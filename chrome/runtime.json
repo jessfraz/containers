@@ -1,13 +1,5 @@
 {
     "mounts": {
-        "/data": {
-            "type": "bind",
-            "source": "/home/jessie/.chrome",
-            "options": [
-                "rw",
-                "rbind"
-            ]
-        },
         "/dev/shm": {
             "type": "bind",
             "source": "/dev/shm",
@@ -118,7 +110,13 @@
             ]
         }
     },
-    "hooks": {},
+    "hooks": {
+        "prestart": [
+            {
+                "path": "/home/jessie/.go/bin/netns"
+            }
+        ]
+    },
     "linux": {
         "uidMappings": [
             {

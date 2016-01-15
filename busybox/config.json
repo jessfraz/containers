@@ -52,6 +52,14 @@
         {
             "name": "cgroup",
             "path": "/sys/fs/cgroup"
+        },
+        {
+            "name": "/etc/hosts",
+            "path": "/etc/hosts"
+        },
+        {
+            "name": "/etc/resolv.conf",
+            "path": "/etc/resolv.conf"
         }
     ],
     "linux": {

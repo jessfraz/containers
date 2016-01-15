@@ -1,0 +1,5 @@
+#!/bin/bash
+
+read input
+name=$(echo "$input" | jq --raw-output '.id')
+hostess add "$name" "$(cat .ip)"

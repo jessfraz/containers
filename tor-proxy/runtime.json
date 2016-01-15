@@ -73,7 +73,21 @@
             ]
         }
     },
-    "hooks": {},
+    "hooks": {
+        "prestart": [
+            {
+                "path": "/home/jessie/.go/bin/netns"
+            },
+            {
+                "path": "/home/jessie/containers/hack/scripts/add-host"
+            }
+        ],
+        "poststop": [
+            {
+                "path": "/home/jessie/containers/hack/scripts/remove-host"
+            }
+        ]
+    },
     "linux": {
         "uidMappings": [
             {

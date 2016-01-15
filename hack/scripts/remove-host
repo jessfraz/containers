@@ -1,0 +1,6 @@
+#!/bin/bash
+
+read input
+name=$(echo "$input" | jq --raw-output '.id')
+hostess rm "$name"
+rm -f .ip

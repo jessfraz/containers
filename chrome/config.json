@@ -33,14 +33,6 @@
     "hostname": "chrome",
     "mounts": [
         {
-            "name": "/root/Pictures",
-            "path": "/root/Pictures"
-        },
-        {
-            "name": "/root/Torrents",
-            "path": "/root/Torrents"
-        },
-        {
             "name": "/data",
             "path": "/data"
         },
@@ -63,6 +55,14 @@
         {
             "name": "/root/Downloads",
             "path": "/root/Downloads"
+        },
+        {
+            "name": "/root/Pictures",
+            "path": "/root/Pictures"
+        },
+        {
+            "name": "/root/Torrents",
+            "path": "/root/Torrents"
         },
         {
             "name": "/proc",

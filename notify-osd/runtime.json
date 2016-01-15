@@ -81,13 +81,7 @@
             ]
         }
     },
-    "hooks": {
-        "prestart": [
-            {
-                "path": "/home/jessie/.go/bin/netns"
-            }
-        ]
-    },
+    "hooks": {},
     "linux": {
         "uidMappings": [
             {

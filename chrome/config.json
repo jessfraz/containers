@@ -60,6 +60,10 @@
             "path": "/tmp/.X11-unix"
         },
         {
+            "name": "/dev/shm",
+            "path": "/dev/shm"
+        },
+        {
             "name": "/root/Downloads",
             "path": "/root/Downloads"
         },
@@ -72,12 +76,12 @@
             "path": "/root/Torrents"
         },
         {
-            "name": "/dev/shm",
-            "path": "/dev/shm"
-        },
-        {
             "name": "/etc/hosts",
             "path": "/etc/hosts"
+        },
+        {
+            "name": "/etc/resolv.conf",
+            "path": "/etc/resolv.conf"
         },
         {
             "name": "/etc/localtime",

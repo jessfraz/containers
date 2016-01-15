@@ -12,7 +12,15 @@
             "type": "bind",
             "source": "/etc/hosts",
             "options": [
-                "rw",
+                "ro",
+                "rbind"
+            ]
+        },
+        "/etc/resolv.conf": {
+            "type": "bind",
+            "source": "/etc/resolv.conf",
+            "options": [
+                "ro",
                 "rbind"
             ]
         },
@@ -21,6 +29,14 @@
             "source": "/etc/localtime",
             "options": [
                 "ro",
+                "rbind"
+            ]
+        },
+        "/tmp/.X11-unix": {
+            "type": "bind",
+            "source": "/tmp/.X11-unix",
+            "options": [
+                "rw",
                 "rbind"
             ]
         },
@@ -43,14 +59,6 @@
         "/root/Torrents": {
             "type": "bind",
             "source": "/home/jessie/Torrents",
-            "options": [
-                "rw",
-                "rbind"
-            ]
-        },
-        "/tmp/.X11-unix": {
-            "type": "bind",
-            "source": "/tmp/.X11-unix",
             "options": [
                 "rw",
                 "rbind"
@@ -364,96 +372,6 @@
                 "fileMode": 8624,
                 "uid": 0,
                 "gid": 44
-            },
-            {
-                "path": "/dev/usb/hiddev0",
-                "type": 99,
-                "major": 180,
-                "minor": 0,
-                "permissions": "rwm",
-                "fileMode": 8576,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/001/001",
-                "type": 99,
-                "major": 189,
-                "minor": 0,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/001/002",
-                "type": 99,
-                "major": 189,
-                "minor": 1,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/001/003",
-                "type": 99,
-                "major": 189,
-                "minor": 2,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/001/004",
-                "type": 99,
-                "major": 189,
-                "minor": 3,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/002/001",
-                "type": 99,
-                "major": 189,
-                "minor": 128,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/002/002",
-                "type": 99,
-                "major": 189,
-                "minor": 129,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/003/001",
-                "type": 99,
-                "major": 189,
-                "minor": 256,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/003/002",
-                "type": 99,
-                "major": 189,
-                "minor": 257,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
             }
         ],
         "apparmorProfile": "docker-default",

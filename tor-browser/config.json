@@ -5,57 +5,67 @@
         "arch": "x86_64"
     },
     "process": {
-        "terminal": true,
+        "terminal": false,
         "user": {
-            "uid": 100,
-            "gid": 100
+            "uid": 1000,
+            "gid": 1000
         },
         "args": [
-            "tor",
-            "-f",
-            "/etc/tor/torrc.default"
+            "bash",
+            "./start-tor-browser"
         ],
         "env": [
-            "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            "DISPLAY=unix:0.0",
+            "GDK_SCALE=2",
+            "GDK_DPI_SCALE=0.5",
+            "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "HOME=/home/user",
+            "LANG=C.UTF-8",
+            "TOR_VERSION=5.0.7",
+            "TOR_FINGERPRINT=0x4E2C6E8793298290"
         ],
-        "cwd": ""
+        "cwd": "/usr/local/bin/Browser/"
     },
     "root": {
         "path": "rootfs",
         "readonly": false
     },
-    "hostname": "tor-proxy",
+    "hostname": "tor-browser",
     "mounts": [
         {
             "name": "/etc/localtime",
             "path": "/etc/localtime"
         },
         {
-            "name": "/proc",
+            "name": "/tmp/.X11-unix",
+            "path": "/tmp/.X11-unix"
+        },
+        {
+            "name": "proc",
             "path": "/proc"
         },
         {
-            "name": "/dev",
+            "name": "dev",
             "path": "/dev"
         },
         {
-            "name": "/dev/pts",
+            "name": "devpts",
             "path": "/dev/pts"
         },
         {
-            "name": "/dev/shm",
+            "name": "shm",
             "path": "/dev/shm"
         },
         {
-            "name": "/dev/mqueue",
+            "name": "mqueue",
             "path": "/dev/mqueue"
         },
         {
-            "name": "/sys",
+            "name": "sysfs",
             "path": "/sys"
         },
         {
-            "name": "/sys/fs/cgroup",
+            "name": "cgroup",
             "path": "/sys/fs/cgroup"
         }
     ],

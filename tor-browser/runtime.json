@@ -1,6 +1,32 @@
 {
     "mounts": {
-        "/dev": {
+        "/etc/localtime": {
+            "type": "bind",
+            "source": "/etc/localtime",
+            "options": [
+                "ro",
+                "rbind"
+            ]
+        },
+        "/tmp/.X11-unix": {
+            "type": "bind",
+            "source": "/tmp/.X11-unix",
+            "options": [
+                "rw",
+                "rbind"
+            ]
+        },
+        "cgroup": {
+            "type": "cgroup",
+            "source": "cgroup",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev",
+                "relatime"
+            ]
+        },
+        "dev": {
             "type": "tmpfs",
             "source": "tmpfs",
             "options": [
@@ -10,16 +36,7 @@
                 "size=65536k"
             ]
         },
-        "/dev/mqueue": {
-            "type": "mqueue",
-            "source": "mqueue",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
-            ]
-        },
-        "/dev/pts": {
+        "devpts": {
             "type": "devpts",
             "source": "devpts",
             "options": [
@@ -30,7 +47,20 @@
                 "mode=0620"
             ]
         },
-        "/dev/shm": {
+        "mqueue": {
+            "type": "mqueue",
+            "source": "mqueue",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
+            ]
+        },
+        "proc": {
+            "type": "proc",
+            "source": "proc"
+        },
+        "shm": {
             "type": "tmpfs",
             "source": "shm",
             "options": [
@@ -41,19 +71,7 @@
                 "size=65536k"
             ]
         },
-        "/etc/localtime": {
-            "type": "bind",
-            "source": "/etc/localtime",
-            "options": [
-                "ro",
-                "rbind"
-            ]
-        },
-        "/proc": {
-            "type": "proc",
-            "source": "proc"
-        },
-        "/sys": {
+        "sysfs": {
             "type": "sysfs",
             "source": "sysfs",
             "options": [
@@ -61,44 +79,26 @@
                 "noexec",
                 "nodev"
             ]
-        },
-        "/sys/fs/cgroup": {
-            "type": "cgroup",
-            "source": "cgroup",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev",
-                "relatime"
-            ]
         }
     },
     "hooks": {
         "prestart": [
             {
                 "path": "/home/jessie/.go/bin/netns"
-            },
-            {
-                "path": "/home/jessie/containers/hack/scripts/add-host"
-            }
-        ],
-        "poststop": [
-            {
-                "path": "/home/jessie/containers/hack/scripts/remove-host"
             }
         ]
     },
     "linux": {
         "uidMappings": [
             {
-                "hostID": 886332,
+                "hostID": 885432,
                 "containerID": 0,
                 "size": 46578392
             }
         ],
         "gidMappings": [
             {
-                "hostID": 886332,
+                "hostID": 885432,
                 "containerID": 0,
                 "size": 46578392
             }
@@ -137,12 +137,6 @@
         },
         "namespaces": [
             {
-                "type": "pid"
-            },
-            {
-                "type": "network"
-            },
-            {
                 "type": "ipc"
             },
             {
@@ -150,6 +144,12 @@
             },
             {
                 "type": "mount"
+            },
+            {
+                "type": "network"
+            },
+            {
+                "type": "pid"
             },
             {
                 "type": "user"
@@ -215,6 +215,66 @@
                 "fileMode": 438,
                 "uid": 0,
                 "gid": 0
+            },
+            {
+                "path": "/dev/snd/controlC0",
+                "type": 99,
+                "major": 116,
+                "minor": 2,
+                "permissions": "rwm",
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 29
+            },
+            {
+                "path": "/dev/snd/hwC0D0",
+                "type": 99,
+                "major": 116,
+                "minor": 5,
+                "permissions": "rwm",
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 29
+            },
+            {
+                "path": "/dev/snd/pcmC0D0c",
+                "type": 99,
+                "major": 116,
+                "minor": 4,
+                "permissions": "rwm",
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 29
+            },
+            {
+                "path": "/dev/snd/pcmC0D0p",
+                "type": 99,
+                "major": 116,
+                "minor": 3,
+                "permissions": "rwm",
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 29
+            },
+            {
+                "path": "/dev/snd/seq",
+                "type": 99,
+                "major": 116,
+                "minor": 1,
+                "permissions": "rwm",
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 29
+            },
+            {
+                "path": "/dev/snd/timer",
+                "type": 99,
+                "major": 116,
+                "minor": 33,
+                "permissions": "rwm",
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 29
             }
         ],
         "apparmorProfile": "docker-default",

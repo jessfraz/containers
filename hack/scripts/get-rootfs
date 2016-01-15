@@ -1,0 +1,38 @@
+#!/bin/bash
+set -e
+
+image="$1"
+bundle=rootfs
+userns_uid=$(cat runtime.json | jq '.linux.uidMappings' | jq --raw-output '.[0].hostID' || echo "")
+
+if [[ -z "$image" ]]; then
+	echo "pass an image name to save for the rootfs"
+	exit 1
+fi
+
+docker pull "$image"
+
+shortname=${image%%:*}
+if echo "$shortname" | grep -q "/" ; then
+	shortname=${sortname#*/}
+fi
+
+id=$(docker create "$image" || docker create "$image" sh)
+docker export "$id" > "${shortname}.tar"
+
+# remove the container you created
+docker rm -f "$id"
+
+if [[ -d "$bundle" ]]; then
+	sudo rm -rf "$bundle"
+fi
+
+mkdir -p "$bundle"
+tar -C "$bundle" -xf "${shortname}.tar"
+
+# chown for userns
+if [[ ! -z "$userns_uid" ]]; then
+	sudo chown -R "${userns_uid}":"${userns_uid}" "${bundle}"
+fi
+
+rm -f "${shortname}.tar"

@@ -1,43 +1,5 @@
 {
     "mounts": {
-        "/data": {
-            "type": "bind",
-            "source": "/home/jessie/.chrome",
-            "options": [
-                "rw",
-                "rbind"
-            ]
-        },
-        "/dev": {
-            "type": "tmpfs",
-            "source": "tmpfs",
-            "options": [
-                "nosuid",
-                "strictatime",
-                "mode=755",
-                "size=65536k"
-            ]
-        },
-        "/dev/mqueue": {
-            "type": "mqueue",
-            "source": "mqueue",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
-            ]
-        },
-        "/dev/pts": {
-            "type": "devpts",
-            "source": "devpts",
-            "options": [
-                "nosuid",
-                "noexec",
-                "newinstance",
-                "ptmxmode=0666",
-                "mode=0620"
-            ]
-        },
         "/dev/shm": {
             "type": "bind",
             "source": "/dev/shm",
@@ -50,8 +12,16 @@
             "type": "bind",
             "source": "/etc/hosts",
             "options": [
-                "rbind",
-                "ro"
+                "ro",
+                "rbind"
+            ]
+        },
+        "/etc/resolv.conf": {
+            "type": "bind",
+            "source": "/etc/resolv.conf",
+            "options": [
+                "ro",
+                "rbind"
             ]
         },
         "/etc/localtime": {
@@ -62,17 +32,21 @@
                 "rbind"
             ]
         },
-        "/etc/resolv.conf": {
+        "/tmp/.X11-unix": {
             "type": "bind",
-            "source": "/etc/resolv.conf",
+            "source": "/tmp/.X11-unix",
             "options": [
-                "rbind",
-                "ro"
+                "rw",
+                "rbind"
             ]
         },
-        "/proc": {
-            "type": "proc",
-            "source": "proc"
+        "/data": {
+            "type": "bind",
+            "source": "/home/jessie/.chrome",
+            "options": [
+                "rw",
+                "rbind"
+            ]
         },
         "/root/Downloads": {
             "type": "bind",
@@ -98,16 +72,7 @@
                 "rbind"
             ]
         },
-        "/sys": {
-            "type": "sysfs",
-            "source": "sysfs",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
-            ]
-        },
-        "/sys/fs/cgroup": {
+        "cgroup": {
             "type": "cgroup",
             "source": "cgroup",
             "options": [
@@ -117,12 +82,47 @@
                 "relatime"
             ]
         },
-        "/tmp/.X11-unix": {
-            "type": "bind",
-            "source": "/tmp/.X11-unix",
+        "dev": {
+            "type": "tmpfs",
+            "source": "tmpfs",
             "options": [
-                "rw",
-                "rbind"
+                "nosuid",
+                "strictatime",
+                "mode=755",
+                "size=65536k"
+            ]
+        },
+        "devpts": {
+            "type": "devpts",
+            "source": "devpts",
+            "options": [
+                "nosuid",
+                "noexec",
+                "newinstance",
+                "ptmxmode=0666",
+                "mode=0620"
+            ]
+        },
+        "mqueue": {
+            "type": "mqueue",
+            "source": "mqueue",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
+            ]
+        },
+        "proc": {
+            "type": "proc",
+            "source": "proc"
+        },
+        "sysfs": {
+            "type": "sysfs",
+            "source": "sysfs",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
             ]
         }
     },
@@ -138,14 +138,24 @@
             {
                 "hostID": 886432,
                 "containerID": 0,
-                "size": 46578392
+                "size": 65535
             }
         ],
         "gidMappings": [
             {
+                "hostID": 886432,
+                "containerID": 0,
+                "size": 28
+            },
+            {
                 "hostID": 29,
                 "containerID": 29,
                 "size": 1
+            },
+            {
+                "hostID": 886461,
+                "containerID": 30,
+                "size": 13
             },
             {
                 "hostID": 44,
@@ -153,19 +163,9 @@
                 "size": 1
             },
             {
-                "hostID": 886503,
+                "hostID": 886474,
                 "containerID": 45,
-                "size": 46578317
-            },
-            {
-                "hostID": 886460,
-                "containerID": 30,
-                "size": 13
-            },
-            {
-                "hostID": 886432,
-                "containerID": 0,
-                "size": 28
+                "size": 65593
             }
         ],
         "rlimits": [

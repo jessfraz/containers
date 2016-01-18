@@ -2,5 +2,5 @@
 
 read input
 name=$(echo "$input" | jq --raw-output '.id')
-hostess rm "$name"
+/home/jessie/.go/bin/hostess rm "$name"
 rm -f .ip

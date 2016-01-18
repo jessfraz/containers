@@ -197,76 +197,6 @@
                 "gid": 0
             },
             {
-                "path": "/dev/bus/usb/001/001",
-                "type": 99,
-                "major": 189,
-                "minor": 0,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/001/002",
-                "type": 99,
-                "major": 189,
-                "minor": 1,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/001/003",
-                "type": 99,
-                "major": 189,
-                "minor": 2,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/001/004",
-                "type": 99,
-                "major": 189,
-                "minor": 3,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/002/001",
-                "type": 99,
-                "major": 189,
-                "minor": 128,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/003/001",
-                "type": 99,
-                "major": 189,
-                "minor": 256,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
-                "path": "/dev/bus/usb/003/002",
-                "type": 99,
-                "major": 189,
-                "minor": 257,
-                "permissions": "rwm",
-                "fileMode": 8628,
-                "uid": 0,
-                "gid": 0
-            },
-            {
                 "path": "/dev/cpu/0/msr",
                 "type": 99,
                 "major": 202,
@@ -1691,6 +1621,36 @@
                 "type": 99,
                 "major": 180,
                 "minor": 0,
+                "permissions": "rwm",
+                "fileMode": 8576,
+                "uid": 0,
+                "gid": 0
+            },
+            {
+                "path": "/dev/vboxdrv",
+                "type": 99,
+                "major": 10,
+                "minor": 56,
+                "permissions": "rwm",
+                "fileMode": 8576,
+                "uid": 0,
+                "gid": 0
+            },
+            {
+                "path": "/dev/vboxdrvu",
+                "type": 99,
+                "major": 10,
+                "minor": 55,
+                "permissions": "rwm",
+                "fileMode": 8576,
+                "uid": 0,
+                "gid": 0
+            },
+            {
+                "path": "/dev/vboxnetctl",
+                "type": 99,
+                "major": 10,
+                "minor": 54,
                 "permissions": "rwm",
                 "fileMode": 8576,
                 "uid": 0,

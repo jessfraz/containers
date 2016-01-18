@@ -27,6 +27,10 @@
     },
     "mounts": [
         {
+            "name": "/root/.config/VirtualBox",
+            "path": "/root/.config/VirtualBox"
+        },
+        {
             "name": "/etc/localtime",
             "path": "/etc/localtime"
         },
@@ -37,10 +41,6 @@
         {
             "name": "/root/VirtualBox VMs",
             "path": "/root/VirtualBox VMs"
-        },
-        {
-            "name": "/root/.config/VirtualBox",
-            "path": "/root/.config/VirtualBox"
         },
         {
             "name": "proc",

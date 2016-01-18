@@ -35,31 +35,31 @@
             "path": "/tmp/.X11-unix"
         },
         {
-            "name": "/proc",
+            "name": "proc",
             "path": "/proc"
         },
         {
-            "name": "/dev",
+            "name": "dev",
             "path": "/dev"
         },
         {
-            "name": "/dev/pts",
+            "name": "devpts",
             "path": "/dev/pts"
         },
         {
-            "name": "/dev/shm",
+            "name": "shm",
             "path": "/dev/shm"
         },
         {
-            "name": "/dev/mqueue",
+            "name": "mqueue",
             "path": "/dev/mqueue"
         },
         {
-            "name": "/sys",
+            "name": "sysfs",
             "path": "/sys"
         },
         {
-            "name": "/sys/fs/cgroup",
+            "name": "cgroup",
             "path": "/sys/fs/cgroup"
         }
     ],

@@ -1,6 +1,32 @@
 {
     "mounts": {
-        "/dev": {
+        "/etc/localtime": {
+            "type": "bind",
+            "source": "/etc/localtime",
+            "options": [
+                "ro",
+                "rbind"
+            ]
+        },
+        "/tmp/.X11-unix": {
+            "type": "bind",
+            "source": "/tmp/.X11-unix",
+            "options": [
+                "rw",
+                "rbind"
+            ]
+        },
+        "cgroup": {
+            "type": "cgroup",
+            "source": "cgroup",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev",
+                "relatime"
+            ]
+        },
+        "dev": {
             "type": "tmpfs",
             "source": "tmpfs",
             "options": [
@@ -10,16 +36,7 @@
                 "size=65536k"
             ]
         },
-        "/dev/mqueue": {
-            "type": "mqueue",
-            "source": "mqueue",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
-            ]
-        },
-        "/dev/pts": {
+        "devpts": {
             "type": "devpts",
             "source": "devpts",
             "options": [
@@ -30,7 +47,20 @@
                 "mode=0620"
             ]
         },
-        "/dev/shm": {
+        "mqueue": {
+            "type": "mqueue",
+            "source": "mqueue",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
+            ]
+        },
+        "proc": {
+            "type": "proc",
+            "source": "proc"
+        },
+        "shm": {
             "type": "tmpfs",
             "source": "shm",
             "options": [
@@ -41,43 +71,13 @@
                 "size=65536k"
             ]
         },
-        "/etc/localtime": {
-            "type": "bind",
-            "source": "/etc/localtime",
-            "options": [
-                "ro",
-                "rbind"
-            ]
-        },
-        "/proc": {
-            "type": "proc",
-            "source": "proc"
-        },
-        "/sys": {
+        "sysfs": {
             "type": "sysfs",
             "source": "sysfs",
             "options": [
                 "nosuid",
                 "noexec",
                 "nodev"
-            ]
-        },
-        "/sys/fs/cgroup": {
-            "type": "cgroup",
-            "source": "cgroup",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev",
-                "relatime"
-            ]
-        },
-        "/tmp/.X11-unix": {
-            "type": "bind",
-            "source": "/tmp/.X11-unix",
-            "options": [
-                "rw",
-                "rbind"
             ]
         }
     },
@@ -131,12 +131,6 @@
         },
         "namespaces": [
             {
-                "type": "pid"
-            },
-            {
-                "type": "network"
-            },
-            {
                 "type": "ipc"
             },
             {
@@ -144,6 +138,12 @@
             },
             {
                 "type": "mount"
+            },
+            {
+                "type": "network"
+            },
+            {
+                "type": "pid"
             },
             {
                 "type": "user"

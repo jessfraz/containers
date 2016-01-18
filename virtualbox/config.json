@@ -19,7 +19,7 @@
             "GDK_DPI_SCALE=0.5",
             "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
         ],
-        "cwd": ""
+        "cwd": "/"
     },
     "root": {
         "path": "rootfs",

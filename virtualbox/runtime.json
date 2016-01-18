@@ -98,7 +98,16 @@
             ]
         }
     },
-    "hooks": {},
+    "hooks": {
+        "prestart": [
+            {
+                "path": "/home/jessie/containers/virtualbox/load_kernel_modules.sh"
+            },
+            {
+                "path": "/home/jessie/.go/bin/netns"
+            }
+        ]
+    },
     "linux": {
         "rlimits": [
             {

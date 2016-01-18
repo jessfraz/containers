@@ -1,4 +1,4 @@
 #!/bin/bash
 
-modprobe vboxdrv;
-insmod /lib/modules/$(uname -r)/misc/vboxnet*.ko;
+modprobe vboxdrv &>/dev/null || true;
+insmod /lib/modules/$(uname -r)/misc/vboxnet*.ko &>/dev/null || true;

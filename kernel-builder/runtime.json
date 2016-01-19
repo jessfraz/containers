@@ -97,20 +97,6 @@
         ]
     },
     "linux": {
-        "uidMappings": [
-            {
-                "hostID": 886432,
-                "containerID": 0,
-                "size": 46578392
-            }
-        ],
-        "gidMappings": [
-            {
-                "hostID": 886432,
-                "containerID": 0,
-                "size": 46578392
-            }
-        ],
         "rlimits": [
             {
                 "type": "RLIMIT_NOFILE",
@@ -158,9 +144,6 @@
             },
             {
                 "type": "pid"
-            },
-            {
-                "type": "user"
             }
         ],
         "devices": [

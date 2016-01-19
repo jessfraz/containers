@@ -48,3 +48,4 @@ Icon
 rootfs/*
 *.tar
 .ip
+strace.log

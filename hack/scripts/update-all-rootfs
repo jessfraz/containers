@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+update_rootfs() {
+	container_dir=$HOME/containers
+
+	containers=( $(find "$container_dir" -maxdepth 1 ! -path "$container_dir" -type d -not -name "hack" -not -name ".*") )
+	for container in "${containers[@]}"; do
+		(
+			cd "$container"
+			exec "${DIR}/get-rootfs"
+			echo
+			echo "Updated $(basename container) to latest rootfs"
+			echo
+		)
+	done
+}
+
+update_rootfs $@

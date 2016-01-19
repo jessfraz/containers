@@ -1,41 +1,45 @@
 #!/bin/bash
 set -e
 
-image="$1"
-bundle=rootfs
-userns_uid=$(cat runtime.json | jq '.linux.uidMappings' | jq --raw-output '.[0].hostID' || echo "")
+get_rootfs(){
+	image="$1"
+	bundle=rootfs
+	userns_uid=$(cat runtime.json | jq '.linux.uidMappings' | jq --raw-output '.[0].hostID' || echo "")
 
-if [[ -z "$image" ]]; then
-	# get the basename of the current directory
-	image=$(basename "$(pwd)")
-fi
+	if [[ -z "$image" ]]; then
+		# get the basename of the current directory
+		image=$(basename "$(pwd)")
+	fi
 
-docker pull "$image" || {
-image="jess/${image}"
-docker pull "$image"
+	docker pull "$image" || {
+		image="jess/${image}"
+		docker pull "$image"
+	}
+
+	shortname=${image%%:*}
+	if echo "$shortname" | grep -q "/" ; then
+		shortname=${shortname#*/}
+	fi
+
+	id=$(docker create "$image" || docker create "$image" sh)
+	docker export "$id" > "${shortname}.tar"
+
+	# remove the container you created
+	docker rm -f "$id"
+
+	if [[ -d "$bundle" ]]; then
+		sudo rm -rf "$bundle"
+	fi
+
+	mkdir -p "$bundle"
+	sudo tar -C "$bundle" -xf "${shortname}.tar"
+
+	# chown for userns
+	if [ ! -z "$userns_uid" ] && [ "$userns_uid" != "null" ]; then
+		sudo chown -R "${userns_uid}":"${userns_uid}" "${bundle}"
+	fi
+
+	rm -f "${shortname}.tar"
 }
 
-shortname=${image%%:*}
-if echo "$shortname" | grep -q "/" ; then
-	shortname=${shortname#*/}
-fi
-
-id=$(docker create "$image" || docker create "$image" sh)
-docker export "$id" > "${shortname}.tar"
-
-# remove the container you created
-docker rm -f "$id"
-
-if [[ -d "$bundle" ]]; then
-	sudo rm -rf "$bundle"
-fi
-
-mkdir -p "$bundle"
-sudo tar -C "$bundle" -xf "${shortname}.tar"
-
-# chown for userns
-if [ ! -z "$userns_uid" ] && [ "$userns_uid" != "null" ]; then
-	sudo chown -R "${userns_uid}":"${userns_uid}" "${bundle}"
-fi
-
-rm -f "${shortname}.tar"
+get_rootfs $@

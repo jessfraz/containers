@@ -11,3 +11,6 @@ $ sudo systemctl start runc@notify-osd
 
 $ sudo systemctl start runc@chrome
 ```
+
+Check out my blog post about this:
+[blog.jessfraz.com/post/runc-containers-on-the-desktop/](https://blog.jessfraz.com/post/runc-containers-on-the-desktop/).

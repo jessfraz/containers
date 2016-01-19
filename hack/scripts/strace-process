@@ -3,3 +3,4 @@
 read input
 pid=$(echo "$input" | jq --raw-output '.pid')
 strace -f -p "$pid" -o strace.log &
+exit 0

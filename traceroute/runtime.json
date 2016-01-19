@@ -8,36 +8,12 @@
                 "ro"
             ]
         },
-        "/etc/localtime": {
-            "type": "bind",
-            "source": "/etc/localtime",
-            "options": [
-                "ro",
-                "rbind"
-            ]
-        },
         "/etc/resolv.conf": {
             "type": "bind",
             "source": "/etc/resolv.conf",
             "options": [
                 "rbind",
                 "ro"
-            ]
-        },
-        "/home/vlc/Torrents": {
-            "type": "bind",
-            "source": "/home/jessie/Torrents",
-            "options": [
-                "rw",
-                "rbind"
-            ]
-        },
-        "/tmp/.X11-unix": {
-            "type": "bind",
-            "source": "/tmp/.X11-unix",
-            "options": [
-                "rw",
-                "rbind"
             ]
         },
         "cgroup": {
@@ -47,7 +23,8 @@
                 "nosuid",
                 "noexec",
                 "nodev",
-                "relatime"
+                "relatime",
+                "ro"
             ]
         },
         "dev": {
@@ -68,7 +45,8 @@
                 "noexec",
                 "newinstance",
                 "ptmxmode=0666",
-                "mode=0620"
+                "mode=0620",
+                "gid=5"
             ]
         },
         "mqueue": {
@@ -105,53 +83,8 @@
             ]
         }
     },
-    "hooks": {
-        "prestart": [
-            {
-                "path": "/home/jessie/.go/bin/netns"
-            }
-        ],
-        "poststart": [
-            {
-                "path": "/home/jessie/containers/hack/scripts/strace-process"
-            }
-        ]
-    },
+    "hooks": {},
     "linux": {
-        "uidMappings": [
-            {
-                "hostID": 885432,
-                "containerID": 0,
-                "size": 46578392
-            }
-        ],
-        "gidMappings": [
-            {
-                "hostID": 29,
-                "containerID": 29,
-                "size": 1
-            },
-            {
-                "hostID": 44,
-                "containerID": 44,
-                "size": 1
-            },
-            {
-                "hostID": 885503,
-                "containerID": 45,
-                "size": 46578317
-            },
-            {
-                "hostID": 885460,
-                "containerID": 30,
-                "size": 13
-            },
-            {
-                "hostID": 885432,
-                "containerID": 0,
-                "size": 28
-            }
-        ],
         "rlimits": [
             {
                 "type": "RLIMIT_NOFILE",
@@ -195,13 +128,7 @@
                 "type": "mount"
             },
             {
-                "type": "network"
-            },
-            {
                 "type": "pid"
-            },
-            {
-                "type": "user"
             }
         ],
         "devices": [
@@ -264,36 +191,6 @@
                 "fileMode": 438,
                 "uid": 0,
                 "gid": 0
-            },
-            {
-                "path": "/dev/dri/card0",
-                "type": 99,
-                "major": 226,
-                "minor": 0,
-                "permissions": "rwm",
-                "fileMode": 8624,
-                "uid": 0,
-                "gid": 44
-            },
-            {
-                "path": "/dev/dri/controlD64",
-                "type": 99,
-                "major": 226,
-                "minor": 64,
-                "permissions": "rwm",
-                "fileMode": 8624,
-                "uid": 0,
-                "gid": 44
-            },
-            {
-                "path": "/dev/dri/renderD128",
-                "type": 99,
-                "major": 226,
-                "minor": 128,
-                "permissions": "rwm",
-                "fileMode": 8624,
-                "uid": 0,
-                "gid": 44
             }
         ],
         "apparmorProfile": "docker-default",

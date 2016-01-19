@@ -109,19 +109,11 @@
         "prestart": [
             {
                 "path": "/home/jessie/.go/bin/netns"
-            },
-            {
-                "path": "/home/jessie/containers/hack/scripts/add-host"
             }
         ],
         "poststart": [
             {
                 "path": "/home/jessie/containers/hack/scripts/strace-process"
-            }
-        ],
-        "poststop": [
-            {
-                "path": "/home/jessie/containers/hack/scripts/remove-host"
             }
         ]
     },

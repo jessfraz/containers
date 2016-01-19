@@ -5,26 +5,41 @@
         "arch": "x86_64"
     },
     "process": {
-        "terminal": true,
+        "terminal": false,
         "user": {
-            "uid": 0,
-            "gid": 0
+            "uid": 1000,
+            "gid": 1000,
+            "additionalGids": [
+                44,
+                29
+            ]
         },
         "args": [
-            "bash"
+            "skype"
         ],
         "env": [
+            "DISPLAY=unix:0.0",
+            "PULSE_SERVER=pulseaudio",
             "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-            "TERM=xterm"
+            "DEBIAN_FRONTEND=noninteractive",
+            "HOME=/home/skype"
         ],
-        "cwd": "/"
+        "cwd": "/home/skype"
     },
     "root": {
         "path": "rootfs",
         "readonly": false
     },
-    "hostname": "shell",
+    "hostname": "skype",
     "mounts": [
+        {
+            "name": "/etc/localtime",
+            "path": "/etc/localtime"
+        },
+        {
+            "name": "/tmp/.X11-unix",
+            "path": "/tmp/.X11-unix"
+        },
         {
             "name": "proc",
             "path": "/proc"

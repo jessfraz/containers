@@ -8,12 +8,28 @@
                 "ro"
             ]
         },
+        "/etc/localtime": {
+            "type": "bind",
+            "source": "/etc/localtime",
+            "options": [
+                "ro",
+                "rbind"
+            ]
+        },
         "/etc/resolv.conf": {
             "type": "bind",
             "source": "/etc/resolv.conf",
             "options": [
                 "rbind",
                 "ro"
+            ]
+        },
+        "/tmp/.X11-unix": {
+            "type": "bind",
+            "source": "/tmp/.X11-unix",
+            "options": [
+                "rw",
+                "rbind"
             ]
         },
         "cgroup": {
@@ -96,16 +112,36 @@
     "linux": {
         "uidMappings": [
             {
-                "hostID": 886432,
+                "hostID": 885432,
                 "containerID": 0,
                 "size": 46578392
             }
         ],
         "gidMappings": [
             {
-                "hostID": 886432,
+                "hostID": 44,
+                "containerID": 44,
+                "size": 1
+            },
+            {
+                "hostID": 885475,
+                "containerID": 45,
+                "size": 46578347
+            },
+            {
+                "hostID": 29,
+                "containerID": 29,
+                "size": 1
+            },
+            {
+                "hostID": 885460,
+                "containerID": 30,
+                "size": 13
+            },
+            {
+                "hostID": 885432,
                 "containerID": 0,
-                "size": 46578392
+                "size": 28
             }
         ],
         "rlimits": [
@@ -220,13 +256,28 @@
                 "fileMode": 438,
                 "uid": 0,
                 "gid": 0
+            },
+            {
+                "path": "/dev/video0",
+                "type": 99,
+                "major": 81,
+                "minor": 0,
+                "permissions": "rwm",
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 44
             }
         ],
         "apparmorProfile": "docker-default",
         "selinuxProcessLabel": "",
         "seccomp": {
             "defaultAction": "SCMP_ACT_ERRNO",
-            "architectures": null,
+            "architectures": [
+                "SCMP_ARCH_X86",
+                "SCMP_ARCH_X86_64",
+                "SCMP_ARCH_X32",
+                "SCMP_ARCH_AARCH64"
+            ],
             "syscalls": [
                 {
                     "name": "accept",

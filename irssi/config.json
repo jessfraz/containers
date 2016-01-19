@@ -32,10 +32,6 @@
     "hostname": "irssi",
     "mounts": [
         {
-            "name": "/etc/localtime",
-            "path": "/etc/localtime"
-        },
-        {
             "name": "/tmp/.X11-unix",
             "path": "/tmp/.X11-unix"
         },
@@ -50,6 +46,10 @@
         {
             "name": "/etc",
             "path": "/etc"
+        },
+        {
+            "name": "/etc/localtime",
+            "path": "/etc/localtime"
         },
         {
             "name": "/home/user/.irssi",

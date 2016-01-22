@@ -7,8 +7,8 @@
     "process": {
         "terminal": false,
         "user": {
-            "uid": 100,
-            "gid": 100
+            "uid": 0,
+            "gid": 0
         },
         "args": [
             "tor",

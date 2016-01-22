@@ -2,5 +2,5 @@
 
 read input
 pid=$(echo "$input" | jq --raw-output '.pid')
-strace -f -c -p "$pid" -o strace.log &
+strace -f -ttt -T -p "$pid" -o strace.log &
 exit 0

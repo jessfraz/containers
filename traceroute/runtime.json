@@ -83,7 +83,13 @@
             ]
         }
     },
-    "hooks": {},
+    "hooks": {
+        "poststart": [
+            {
+                "path": "/home/jessie/containers/hack/scripts/strace-process"
+            }
+        ]
+    },
     "linux": {
         "rlimits": [
             {

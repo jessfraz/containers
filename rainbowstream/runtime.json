@@ -115,7 +115,7 @@
             {
                 "path": "/home/jessie/containers/hack/scripts/strace-process"
             }
-        ],
+        ]
     },
     "linux": {
         "uidMappings": [

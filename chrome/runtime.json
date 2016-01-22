@@ -131,11 +131,6 @@
             {
                 "path": "/home/jessie/.go/bin/netns"
             }
-        ],
-        "poststart": [
-            {
-                "path": "/home/jessie/containers/hack/scripts/strace-process"
-            }
         ]
     },
     "linux": {

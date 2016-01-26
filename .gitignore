@@ -49,3 +49,4 @@ rootfs/*
 *.tar
 .ip
 strace.log
+*.pid

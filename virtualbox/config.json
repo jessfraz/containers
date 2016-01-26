@@ -47,20 +47,8 @@
             "path": "/proc"
         },
         {
-            "name": "dev",
+            "name": "/dev",
             "path": "/dev"
-        },
-        {
-            "name": "devpts",
-            "path": "/dev/pts"
-        },
-        {
-            "name": "shm",
-            "path": "/dev/shm"
-        },
-        {
-            "name": "mqueue",
-            "path": "/dev/mqueue"
         },
         {
             "name": "sysfs",

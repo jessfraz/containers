@@ -3,8 +3,11 @@ Description=Use runc to run %i
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/runc start
+Type=forking
+ExecStart=/usr/local/bin/runc start -d --pid-file /home/jessie/containers/%i/.pid
+ExecStopPost=/usr/local/bin/runc delete
 WorkingDirectory=/home/jessie/containers/%i
+PIDFile=/home/jessie/containers/%i/.pid
 
 [Install]
 WantedBy=multi-user.target

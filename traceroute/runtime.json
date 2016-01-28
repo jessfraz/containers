@@ -107,7 +107,7 @@
                 "swap": 0,
                 "kernel": 0,
                 "kernelTCP": null,
-                "swappiness": -1
+                "swappiness": 18446744073709551615
             },
             "cpu": {
                 "shares": 0,

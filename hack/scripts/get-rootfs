@@ -4,7 +4,7 @@ set -e
 get_rootfs(){
 	image="$1"
 	bundle=rootfs
-	userns_uid=$(cat runtime.json | jq '.linux.uidMappings' | jq --raw-output '.[0].hostID' || echo "")
+	userns_uid=$(cat config.json | jq '.linux.uidMappings' | jq --raw-output '.[0].hostID' || echo "")
 
 	if [[ -z "$image" ]]; then
 		# get the basename of the current directory

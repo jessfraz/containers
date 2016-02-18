@@ -61,15 +61,6 @@
             ]
         },
         {
-            "destination": "/dev/shm",
-            "type": "bind",
-            "source": "/dev/shm",
-            "options": [
-                "rw",
-                "rbind"
-            ]
-        },
-        {
             "destination": "/etc/hosts",
             "type": "bind",
             "source": "/etc/hosts",
@@ -119,6 +110,15 @@
                 "strictatime",
                 "mode=755",
                 "size=65536k"
+            ]
+        },
+        {
+            "destination": "/dev/shm",
+            "type": "bind",
+            "source": "/dev/shm",
+            "options": [
+                "rw",
+                "rbind"
             ]
         },
         {

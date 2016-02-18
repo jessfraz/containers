@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=forking
 ExecStart=/usr/local/bin/runc start -d --pid-file /home/jessie/containers/%i/.pid %i
-ExecStopPost=/usr/local/bin/runc delete
+ExecStopPost=-/usr/local/bin/runc delete %i
 WorkingDirectory=/home/jessie/containers/%i
 PIDFile=/home/jessie/containers/%i/.pid
 

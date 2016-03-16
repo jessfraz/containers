@@ -11,8 +11,8 @@
             "gid": 1000
         },
         "args": [
-            "bash",
-            "./start-tor-browser"
+            "/bin/bash",
+            "/usr/local/bin/Browser/start-tor-browser"
         ],
         "env": [
             "DISPLAY=unix:0.0",
@@ -24,7 +24,32 @@
             "TOR_VERSION=5.5",
             "TOR_FINGERPRINT=0x4E2C6E8793298290"
         ],
-        "cwd": "/usr/local/bin/Browser"
+        "cwd": "/home/user",
+        "capabilities": [
+            "CAP_CHOWN",
+            "CAP_DAC_OVERRIDE",
+            "CAP_FSETID",
+            "CAP_FOWNER",
+            "CAP_MKNOD",
+            "CAP_NET_RAW",
+            "CAP_SETGID",
+            "CAP_SETUID",
+            "CAP_SETFCAP",
+            "CAP_SETPCAP",
+            "CAP_NET_BIND_SERVICE",
+            "CAP_SYS_CHROOT",
+            "CAP_KILL",
+            "CAP_AUDIT_WRITE"
+        ],
+        "rlimits": [
+            {
+                "type": "RLIMIT_NOFILE",
+                "hard": 1024,
+                "soft": 1024
+            }
+        ],
+        "noNewPrivileges": true,
+        "apparmorProfile": "docker-default"
     },
     "root": {
         "path": "rootfs",
@@ -120,23 +145,6 @@
                 "nodev",
                 "relatime"
             ]
-        },
-        {
-            "destination": "/etc/hosts",
-            "type": "bind",
-            "source": "/etc/hosts",
-            "options": [
-                "rbind",
-                "ro"
-            ]
-        },
-        {
-            "destination": "/etc/resolv.conf",
-            "type": "bind",
-            "source": "/etc/resolv.conf",
-            "options": [
-                "rbind"
-            ]
         }
     ],
     "hooks": {
@@ -147,22 +155,6 @@
         ]
     },
     "linux": {
-        "capabilities": [
-            "CAP_CHOWN",
-            "CAP_DAC_OVERRIDE",
-            "CAP_FSETID",
-            "CAP_FOWNER",
-            "CAP_MKNOD",
-            "CAP_NET_RAW",
-            "CAP_SETGID",
-            "CAP_SETUID",
-            "CAP_SETFCAP",
-            "CAP_SETPCAP",
-            "CAP_NET_BIND_SERVICE",
-            "CAP_SYS_CHROOT",
-            "CAP_KILL",
-            "CAP_AUDIT_WRITE"
-        ],
         "uidMappings": [
             {
                 "hostID": 885432,
@@ -177,88 +169,81 @@
                 "size": 46578392
             }
         ],
-        "rlimits": [
-            {
-                "type": "RLIMIT_NOFILE",
-                "hard": 1024,
-                "soft": 1024
-            }
-        ],
         "resources": {
             "devices": [
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 1,
                     "minor": 3,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 1,
                     "minor": 5,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 1,
                     "minor": 7,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 1,
                     "minor": 9,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 1,
                     "minor": 8,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 116,
                     "minor": 2,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 116,
                     "minor": 5,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 116,
                     "minor": 4,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 116,
                     "minor": 3,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 116,
                     "minor": 1,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 116,
                     "minor": 33,
                     "access": "rwm"
@@ -311,7 +296,7 @@
         "devices": [
             {
                 "path": "/dev/null",
-                "type": 99,
+                "type": "c",
                 "major": 1,
                 "minor": 3,
                 "fileMode": 438,
@@ -320,7 +305,7 @@
             },
             {
                 "path": "/dev/zero",
-                "type": 99,
+                "type": "c",
                 "major": 1,
                 "minor": 5,
                 "fileMode": 438,
@@ -329,7 +314,7 @@
             },
             {
                 "path": "/dev/full",
-                "type": 99,
+                "type": "c",
                 "major": 1,
                 "minor": 7,
                 "fileMode": 438,
@@ -338,7 +323,7 @@
             },
             {
                 "path": "/dev/urandom",
-                "type": 99,
+                "type": "c",
                 "major": 1,
                 "minor": 9,
                 "fileMode": 438,
@@ -347,7 +332,7 @@
             },
             {
                 "path": "/dev/random",
-                "type": 99,
+                "type": "c",
                 "major": 1,
                 "minor": 8,
                 "fileMode": 438,
@@ -356,7 +341,7 @@
             },
             {
                 "path": "/dev/snd/controlC0",
-                "type": 99,
+                "type": "c",
                 "major": 116,
                 "minor": 2,
                 "fileMode": 8624,
@@ -365,7 +350,7 @@
             },
             {
                 "path": "/dev/snd/hwC0D0",
-                "type": 99,
+                "type": "c",
                 "major": 116,
                 "minor": 5,
                 "fileMode": 8624,
@@ -374,7 +359,7 @@
             },
             {
                 "path": "/dev/snd/pcmC0D0c",
-                "type": 99,
+                "type": "c",
                 "major": 116,
                 "minor": 4,
                 "fileMode": 8624,
@@ -383,7 +368,7 @@
             },
             {
                 "path": "/dev/snd/pcmC0D0p",
-                "type": 99,
+                "type": "c",
                 "major": 116,
                 "minor": 3,
                 "fileMode": 8624,
@@ -392,7 +377,7 @@
             },
             {
                 "path": "/dev/snd/seq",
-                "type": 99,
+                "type": "c",
                 "major": 116,
                 "minor": 1,
                 "fileMode": 8624,
@@ -401,7 +386,7 @@
             },
             {
                 "path": "/dev/snd/timer",
-                "type": 99,
+                "type": "c",
                 "major": 116,
                 "minor": 33,
                 "fileMode": 8624,
@@ -409,8 +394,6 @@
                 "gid": 29
             }
         ],
-        "apparmorProfile": "docker-default",
-        "selinuxProcessLabel": "",
         "seccomp": {
             "defaultAction": "SCMP_ACT_ERRNO",
             "architectures": null,
@@ -1656,7 +1639,6 @@
                     "action": "SCMP_ACT_ALLOW"
                 }
             ]
-        },
-        "noNewPrivileges": true
+        }
     }
 }

@@ -7,8 +7,6 @@
     "process": {
         "terminal": false,
         "user": {
-            "uid": 0,
-            "gid": 0,
             "additionalGids": [
                 44,
                 29
@@ -24,7 +22,32 @@
             "DEBIAN_FRONTEND=noninteractive",
             "HOME=/home/skype"
         ],
-        "cwd": "/home/skype"
+        "cwd": "/home/skype",
+        "capabilities": [
+            "CAP_CHOWN",
+            "CAP_DAC_OVERRIDE",
+            "CAP_FSETID",
+            "CAP_FOWNER",
+            "CAP_MKNOD",
+            "CAP_NET_RAW",
+            "CAP_SETGID",
+            "CAP_SETUID",
+            "CAP_SETFCAP",
+            "CAP_SETPCAP",
+            "CAP_NET_BIND_SERVICE",
+            "CAP_SYS_CHROOT",
+            "CAP_KILL",
+            "CAP_AUDIT_WRITE"
+        ],
+        "rlimits": [
+            {
+                "type": "RLIMIT_NOFILE",
+                "hard": 1024,
+                "soft": 1024
+            }
+        ],
+        "noNewPrivileges": true,
+        "apparmorProfile": "docker-default"
     },
     "root": {
         "path": "rootfs",
@@ -33,20 +56,20 @@
     "hostname": "skype",
     "mounts": [
         {
-            "destination": "/etc/localtime",
-            "type": "bind",
-            "source": "/etc/localtime",
-            "options": [
-                "ro",
-                "rbind"
-            ]
-        },
-        {
             "destination": "/tmp/.X11-unix",
             "type": "bind",
             "source": "/tmp/.X11-unix",
             "options": [
                 "rw",
+                "rbind"
+            ]
+        },
+        {
+            "destination": "/etc/localtime",
+            "type": "bind",
+            "source": "/etc/localtime",
+            "options": [
+                "ro",
                 "rbind"
             ]
         },
@@ -147,22 +170,6 @@
         ]
     },
     "linux": {
-        "capabilities": [
-            "CAP_CHOWN",
-            "CAP_DAC_OVERRIDE",
-            "CAP_FSETID",
-            "CAP_FOWNER",
-            "CAP_MKNOD",
-            "CAP_NET_RAW",
-            "CAP_SETGID",
-            "CAP_SETUID",
-            "CAP_SETFCAP",
-            "CAP_SETPCAP",
-            "CAP_NET_BIND_SERVICE",
-            "CAP_SYS_CHROOT",
-            "CAP_KILL",
-            "CAP_AUDIT_WRITE"
-        ],
         "uidMappings": [
             {
                 "hostID": 886432,
@@ -197,53 +204,46 @@
                 "size": 28
             }
         ],
-        "rlimits": [
-            {
-                "type": "RLIMIT_NOFILE",
-                "hard": 1024,
-                "soft": 1024
-            }
-        ],
         "resources": {
             "devices": [
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 1,
                     "minor": 3,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 1,
                     "minor": 5,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 1,
                     "minor": 7,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 1,
                     "minor": 9,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 1,
                     "minor": 8,
                     "access": "rwm"
                 },
                 {
                     "allow": true,
-                    "type": 99,
+                    "type": "c",
                     "major": 81,
                     "minor": 0,
                     "access": "rwm"
@@ -296,7 +296,7 @@
         "devices": [
             {
                 "path": "/dev/null",
-                "type": 99,
+                "type": "c",
                 "major": 1,
                 "minor": 3,
                 "fileMode": 438,
@@ -305,7 +305,7 @@
             },
             {
                 "path": "/dev/zero",
-                "type": 99,
+                "type": "c",
                 "major": 1,
                 "minor": 5,
                 "fileMode": 438,
@@ -314,7 +314,7 @@
             },
             {
                 "path": "/dev/full",
-                "type": 99,
+                "type": "c",
                 "major": 1,
                 "minor": 7,
                 "fileMode": 438,
@@ -323,7 +323,7 @@
             },
             {
                 "path": "/dev/urandom",
-                "type": 99,
+                "type": "c",
                 "major": 1,
                 "minor": 9,
                 "fileMode": 438,
@@ -332,7 +332,7 @@
             },
             {
                 "path": "/dev/random",
-                "type": 99,
+                "type": "c",
                 "major": 1,
                 "minor": 8,
                 "fileMode": 438,
@@ -341,20 +341,13 @@
             },
             {
                 "path": "/dev/video0",
-                "type": 99,
+                "type": "c",
                 "major": 81,
                 "minor": 0,
                 "fileMode": 8624,
                 "uid": 0,
                 "gid": 44
             }
-        ],
-        "apparmorProfile": "docker-default",
-        "selinuxProcessLabel": "",
-        "seccomp": {
-            "defaultAction": "",
-            "architectures": null
-        },
-        "noNewPrivileges": true
+        ]
     }
 }

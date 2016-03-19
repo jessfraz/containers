@@ -8,6 +8,8 @@ ExecStart=/usr/local/bin/runc start -d --pid-file /home/jessie/containers/%i/.pi
 ExecStopPost=-/usr/local/bin/runc delete %i
 WorkingDirectory=/home/jessie/containers/%i
 PIDFile=/home/jessie/containers/%i/.pid
+# set delegate yes so that systemd does not reset the cgroups of containers
+Delegate=yes
 
 [Install]
 WantedBy=multi-user.target

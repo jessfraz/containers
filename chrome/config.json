@@ -8,7 +8,8 @@
         "terminal": false,
         "user": {
             "additionalGids": [
-                29
+                29,
+                44
             ]
         },
         "args": [
@@ -56,36 +57,6 @@
     "hostname": "chrome",
     "mounts": [
         {
-            "destination": "/etc/hosts",
-            "type": "bind",
-            "source": "/etc/hosts",
-            "options": [
-                "rw",
-                "rbind",
-                "rprivate"
-            ]
-        },
-        {
-            "destination": "/etc/localtime",
-            "type": "bind",
-            "source": "/etc/localtime",
-            "options": [
-                "ro",
-                "rbind",
-                "rprivate"
-            ]
-        },
-        {
-            "destination": "/tmp/.X11-unix",
-            "type": "bind",
-            "source": "/tmp/.X11-unix",
-            "options": [
-                "rw",
-                "rbind",
-                "rprivate"
-            ]
-        },
-        {
             "destination": "/root/Downloads",
             "type": "bind",
             "source": "/home/jessie/Downloads",
@@ -126,6 +97,36 @@
             ]
         },
         {
+            "destination": "/etc/hosts",
+            "type": "bind",
+            "source": "/etc/hosts",
+            "options": [
+                "rw",
+                "rbind",
+                "rprivate"
+            ]
+        },
+        {
+            "destination": "/etc/localtime",
+            "type": "bind",
+            "source": "/etc/localtime",
+            "options": [
+                "ro",
+                "rbind",
+                "rprivate"
+            ]
+        },
+        {
+            "destination": "/tmp/.X11-unix",
+            "type": "bind",
+            "source": "/tmp/.X11-unix",
+            "options": [
+                "rw",
+                "rbind",
+                "rprivate"
+            ]
+        },
+        {
             "destination": "/proc",
             "type": "proc",
             "source": "proc"
@@ -154,16 +155,6 @@
             ]
         },
         {
-            "destination": "/dev/mqueue",
-            "type": "mqueue",
-            "source": "mqueue",
-            "options": [
-                "nosuid",
-                "noexec",
-                "nodev"
-            ]
-        },
-        {
             "destination": "/dev/shm",
             "type": "bind",
             "source": "/dev/shm",
@@ -171,6 +162,16 @@
                 "rw",
                 "rbind",
                 "rprivate"
+            ]
+        },
+        {
+            "destination": "/dev/mqueue",
+            "type": "mqueue",
+            "source": "mqueue",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
             ]
         },
         {
@@ -226,9 +227,19 @@
                 "size": 1
             },
             {
+                "hostID": 44,
+                "containerID": 44,
+                "size": 1
+            },
+            {
+                "hostID": 886503,
+                "containerID": 45,
+                "size": 46578317
+            },
+            {
                 "hostID": 886460,
                 "containerID": 30,
-                "size": 46578362
+                "size": 13
             },
             {
                 "hostID": 886432,
@@ -341,6 +352,34 @@
                     "type": "c",
                     "major": 116,
                     "minor": 33,
+                    "access": "rwm"
+                },
+                {
+                    "allow": true,
+                    "type": "c",
+                    "major": 226,
+                    "minor": 0,
+                    "access": "rwm"
+                },
+                {
+                    "allow": true,
+                    "type": "c",
+                    "major": 226,
+                    "minor": 64,
+                    "access": "rwm"
+                },
+                {
+                    "allow": true,
+                    "type": "c",
+                    "major": 226,
+                    "minor": 128,
+                    "access": "rwm"
+                },
+                {
+                    "allow": true,
+                    "type": "c",
+                    "major": 81,
+                    "minor": 0,
                     "access": "rwm"
                 }
             ],
@@ -523,6 +562,42 @@
                 "fileMode": 8624,
                 "uid": 0,
                 "gid": 29
+            },
+            {
+                "path": "/dev/dri/card0",
+                "type": "c",
+                "major": 226,
+                "minor": 0,
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 44
+            },
+            {
+                "path": "/dev/dri/controlD64",
+                "type": "c",
+                "major": 226,
+                "minor": 64,
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 44
+            },
+            {
+                "path": "/dev/dri/renderD128",
+                "type": "c",
+                "major": 226,
+                "minor": 128,
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 44
+            },
+            {
+                "path": "/dev/video0",
+                "type": "c",
+                "major": 81,
+                "minor": 0,
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 44
             }
         ],
         "seccomp": {

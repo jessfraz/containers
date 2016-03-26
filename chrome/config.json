@@ -8,8 +8,7 @@
         "terminal": false,
         "user": {
             "additionalGids": [
-                29,
-                44
+                29
             ]
         },
         "args": [
@@ -57,39 +56,13 @@
     "hostname": "chrome",
     "mounts": [
         {
-            "destination": "/root/Pictures",
-            "type": "bind",
-            "source": "/home/jessie/Pictures",
-            "options": [
-                "rw",
-                "rbind"
-            ]
-        },
-        {
-            "destination": "/root/Torrents",
-            "type": "bind",
-            "source": "/home/jessie/Torrents",
-            "options": [
-                "rw",
-                "rbind"
-            ]
-        },
-        {
-            "destination": "/data",
-            "type": "bind",
-            "source": "/home/jessie/.chrome",
-            "options": [
-                "rw",
-                "rbind"
-            ]
-        },
-        {
             "destination": "/etc/hosts",
             "type": "bind",
             "source": "/etc/hosts",
             "options": [
                 "rw",
-                "rbind"
+                "rbind",
+                "rprivate"
             ]
         },
         {
@@ -98,7 +71,8 @@
             "source": "/etc/localtime",
             "options": [
                 "ro",
-                "rbind"
+                "rbind",
+                "rprivate"
             ]
         },
         {
@@ -107,7 +81,8 @@
             "source": "/tmp/.X11-unix",
             "options": [
                 "rw",
-                "rbind"
+                "rbind",
+                "rprivate"
             ]
         },
         {
@@ -116,7 +91,38 @@
             "source": "/home/jessie/Downloads",
             "options": [
                 "rw",
-                "rbind"
+                "rbind",
+                "rprivate"
+            ]
+        },
+        {
+            "destination": "/root/Pictures",
+            "type": "bind",
+            "source": "/home/jessie/Pictures",
+            "options": [
+                "rw",
+                "rbind",
+                "rprivate"
+            ]
+        },
+        {
+            "destination": "/root/Torrents",
+            "type": "bind",
+            "source": "/home/jessie/Torrents",
+            "options": [
+                "rw",
+                "rbind",
+                "rprivate"
+            ]
+        },
+        {
+            "destination": "/data",
+            "type": "bind",
+            "source": "/home/jessie/.chrome",
+            "options": [
+                "rw",
+                "rbind",
+                "rprivate"
             ]
         },
         {
@@ -133,15 +139,6 @@
                 "strictatime",
                 "mode=755",
                 "size=65536k"
-            ]
-        },
-        {
-            "destination": "/dev/shm",
-            "type": "bind",
-            "source": "/dev/shm",
-            "options": [
-                "rw",
-                "rbind"
             ]
         },
         {
@@ -164,6 +161,16 @@
                 "nosuid",
                 "noexec",
                 "nodev"
+            ]
+        },
+        {
+            "destination": "/dev/shm",
+            "type": "bind",
+            "source": "/dev/shm",
+            "options": [
+                "rw",
+                "rbind",
+                "rprivate"
             ]
         },
         {
@@ -192,7 +199,8 @@
             "type": "bind",
             "source": "/etc/resolv.conf",
             "options": [
-                "rbind"
+                "rbind",
+                "rprivate"
             ]
         }
     ],
@@ -218,19 +226,9 @@
                 "size": 1
             },
             {
-                "hostID": 44,
-                "containerID": 44,
-                "size": 1
-            },
-            {
-                "hostID": 886503,
-                "containerID": 45,
-                "size": 46578317
-            },
-            {
                 "hostID": 886460,
                 "containerID": 30,
-                "size": 13
+                "size": 46578362
             },
             {
                 "hostID": 886432,
@@ -286,7 +284,14 @@
                     "allow": true,
                     "type": "c",
                     "major": 116,
-                    "minor": 5,
+                    "minor": 8,
+                    "access": "rwm"
+                },
+                {
+                    "allow": true,
+                    "type": "c",
+                    "major": 116,
+                    "minor": 9,
                     "access": "rwm"
                 },
                 {
@@ -307,6 +312,27 @@
                     "allow": true,
                     "type": "c",
                     "major": 116,
+                    "minor": 5,
+                    "access": "rwm"
+                },
+                {
+                    "allow": true,
+                    "type": "c",
+                    "major": 116,
+                    "minor": 6,
+                    "access": "rwm"
+                },
+                {
+                    "allow": true,
+                    "type": "c",
+                    "major": 116,
+                    "minor": 7,
+                    "access": "rwm"
+                },
+                {
+                    "allow": true,
+                    "type": "c",
+                    "major": 116,
                     "minor": 1,
                     "access": "rwm"
                 },
@@ -315,90 +341,6 @@
                     "type": "c",
                     "major": 116,
                     "minor": 33,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 226,
-                    "minor": 0,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 226,
-                    "minor": 64,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 226,
-                    "minor": 128,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 81,
-                    "minor": 0,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 180,
-                    "minor": 0,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 189,
-                    "minor": 0,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 189,
-                    "minor": 1,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 189,
-                    "minor": 128,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 189,
-                    "minor": 129,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 189,
-                    "minor": 130,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 189,
-                    "minor": 131,
-                    "access": "rwm"
-                },
-                {
-                    "allow": true,
-                    "type": "c",
-                    "major": 189,
-                    "minor": 256,
                     "access": "rwm"
                 }
             ],
@@ -505,7 +447,16 @@
                 "path": "/dev/snd/hwC0D0",
                 "type": "c",
                 "major": 116,
-                "minor": 5,
+                "minor": 8,
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 29
+            },
+            {
+                "path": "/dev/snd/hwC0D2",
+                "type": "c",
+                "major": 116,
+                "minor": 9,
                 "fileMode": 8624,
                 "uid": 0,
                 "gid": 29
@@ -529,6 +480,33 @@
                 "gid": 29
             },
             {
+                "path": "/dev/snd/pcmC0D3p",
+                "type": "c",
+                "major": 116,
+                "minor": 5,
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 29
+            },
+            {
+                "path": "/dev/snd/pcmC0D7p",
+                "type": "c",
+                "major": 116,
+                "minor": 6,
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 29
+            },
+            {
+                "path": "/dev/snd/pcmC0D8p",
+                "type": "c",
+                "major": 116,
+                "minor": 7,
+                "fileMode": 8624,
+                "uid": 0,
+                "gid": 29
+            },
+            {
                 "path": "/dev/snd/seq",
                 "type": "c",
                 "major": 116,
@@ -545,42 +523,6 @@
                 "fileMode": 8624,
                 "uid": 0,
                 "gid": 29
-            },
-            {
-                "path": "/dev/dri/card0",
-                "type": "c",
-                "major": 226,
-                "minor": 0,
-                "fileMode": 8624,
-                "uid": 0,
-                "gid": 44
-            },
-            {
-                "path": "/dev/dri/controlD64",
-                "type": "c",
-                "major": 226,
-                "minor": 64,
-                "fileMode": 8624,
-                "uid": 0,
-                "gid": 44
-            },
-            {
-                "path": "/dev/dri/renderD128",
-                "type": "c",
-                "major": 226,
-                "minor": 128,
-                "fileMode": 8624,
-                "uid": 0,
-                "gid": 44
-            },
-            {
-                "path": "/dev/video0",
-                "type": "c",
-                "major": 81,
-                "minor": 0,
-                "fileMode": 8624,
-                "uid": 0,
-                "gid": 44
             }
         ],
         "seccomp": {

@@ -11,9 +11,9 @@ get_rootfs(){
 		image=$(basename "$(pwd)")
 	fi
 
-	docker pull "$image" || {
+	docker pull --disable-content-trust=false "$image" || {
 		image="r.j3ss.co/${image}"
-		docker pull "$image"
+		docker pull --disable-content-trust=false "$image"
 	}
 
 	shortname=${image%%:*}

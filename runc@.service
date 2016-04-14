@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/local/bin/runc start -d --pid-file /home/jessie/containers/%i/.pid %i
-ExecStopPost=-/usr/local/bin/runc delete %i
+ExecStart=/usr/local/sbin/runc start -d --pid-file /home/jessie/containers/%i/.pid %i
+ExecStopPost=-/usr/local/sbin/runc delete %i
 WorkingDirectory=/home/jessie/containers/%i
 PIDFile=/home/jessie/containers/%i/.pid
 # set delegate yes so that systemd does not reset the cgroups of containers

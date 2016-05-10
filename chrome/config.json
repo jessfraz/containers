@@ -383,7 +383,7 @@
                     "access": "rwm"
                 }
             ],
-            "disableOOMKiller": false,
+            "disableOOMKiller": true,
             "oomScoreAdj": 0,
             "memory": {
                 "limit": 3221225472,
